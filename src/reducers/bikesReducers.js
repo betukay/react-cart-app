@@ -4,13 +4,13 @@
 export function bikesReducers(state={
   bikes:
       [{
-      id: 1,
+      _id: 1,
       title: 'this is the first bike title',
       description: 'this is the first bike description',
       price: 120.50
     },
     {
-      id: 2,
+      _id: 2,
       title: 'this is the second bike title',
       description: 'this is the second bike description',
       price: 207.62
@@ -33,7 +33,7 @@ export function bikesReducers(state={
       // Determine at which index in the item array is the item to be deleted
     const indexToDelete = currentBikeToDelete.findIndex(
       function(bike){
-        return bike.id === action.payload.id;
+        return bike._id === action.payload._id;
       }
     )
     //use slice to remove bike at the specified index
@@ -47,7 +47,7 @@ export function bikesReducers(state={
     // Determine at which index in the item array is the item to be deleted
     const indexToUpdate = currentBikeToUpdate.findIndex(
       function(bike){
-        return bike.id === action.payload.id;
+        return bike._id === action.payload._id;
       }
     )
     // Create a new item object with new values and with the same array index of

@@ -3,6 +3,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getBikes} from '../../actions/bikesActions';
+import {Grid, Col, Row, Button} from 'react-bootstrap';
+
+import BikeItem from './bikeItem';
+import BikesForm from './bikesForm';
+import Cart from './cart';
 
 class BikesList extends React.Component {
   componentDidMount(){
@@ -12,18 +17,27 @@ class BikesList extends React.Component {
   render(){
     const bikesList = this.props.bikes.map(function(bikesArr){
       return(
-        <div key={bikesArr.id}>
-          <h2>{bikesArr.title}</h2>
-          <h2>{bikesArr.description}</h2>
-          <h2>{bikesArr.price}</h2>
-        </div>
+        <Col xs={12} sm={6} md={4} key={bikesArr._id}>
+          <BikeItem
+            _id={bikesArr._id}
+            title={bikesArr.title}
+            description={bikesArr.description}
+            price={bikesArr.price}/>
+        </Col>
       )
     })
     return(
-      <div>
-        <h1>Hello React</h1>
-        {bikesList}
-      </div>
+      <Grid>
+        <Row>
+          <Cart />
+        </Row>
+          <Row style={{marginTop:'15px'}}>
+            <Col xs={12} sm={6}>
+              <BikesForm />
+            </Col>
+            {bikesList}
+          </Row>
+      </Grid>
     )
   }
 }
