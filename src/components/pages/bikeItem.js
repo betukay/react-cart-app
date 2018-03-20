@@ -1,10 +1,10 @@
 import React from 'react';
 import {Row, Col, Well, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {bindActionCreators} from 'redux'
 import {addToCart, updateCart} from '../../actions/cartActions';
 
-class BookItem extends React.Component{
+class BikeItem extends React.Component{
 
   handleCart(){
     const bike = [...this.props.cart, {
@@ -62,4 +62,4 @@ function mapDispatchToProps(dispatch){
     updateCart:updateCart
   }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(BookItem);
+export default connect(mapStateToProps, mapDispatchToProps)(BikeItem);

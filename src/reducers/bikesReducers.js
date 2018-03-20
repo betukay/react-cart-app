@@ -22,8 +22,8 @@ export function bikesReducers(state={
     break;
 
     case "POST_BIKE":
-    // let bikes = state.bikes.concat(action.payload)
-    // return {bikes};
+    let bikes = state.bikes.concat(action.payload)
+    return {bikes};
     return {bikes:[...state.bikes, ...action.payload]}
     break;
 
@@ -33,7 +33,7 @@ export function bikesReducers(state={
       // Determine at which index in the item array is the item to be deleted
     const indexToDelete = currentBikeToDelete.findIndex(
       function(bike){
-        return bike._id === action.payload._id;
+        return bike._id == action.payload;
       }
     )
     //use slice to remove bike at the specified index

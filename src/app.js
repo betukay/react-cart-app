@@ -18,10 +18,16 @@ const middleware = applyMiddleware(logger);
 const store = createStore(reducers, middleware);
 
 import BikesList from './components/pages/bikeslist';
+import Menu from './components/menu';
+import Footer from './components/footer';
 
 render(
   <Provider store={store}>
-    <BikesList />
+    <div>
+      <Menu />
+      <BikesList />
+      <Footer />
+    </div>
   </Provider>, document.getElementById('app')
 );
 
