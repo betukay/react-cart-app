@@ -57,7 +57,7 @@ class Cart extends React.Component{
     const cartItemsList = this.props.cart.map(function(cartArr){
       return(
         <Panel key={cartArr._id}>
-          <Row>
+          <Row style={{padding:"10px"}}>
             <Col xs={12} sm={4}>
               <h6>{cartArr.title}</h6><span>  </span>
             </Col>
