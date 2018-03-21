@@ -81,7 +81,8 @@ class Cart extends React.Component{
     }, this)
     return(
       <div>
-        <Panel style={{padding:"15px"}}header="Cart" bsStyle="primary">
+        <Panel style={{padding:"15px"}} bsStyle="primary">
+          <h4>Cart</h4>
           {cartItemsList}
           <Row>
             <Col xs={12}>
