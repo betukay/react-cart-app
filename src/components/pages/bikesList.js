@@ -12,11 +12,10 @@ import Cart from './cart';
 class BikesList extends React.Component {
   componentDidMount(){
     //Dispatch an action
-    this.props.getBikes();
+    this.props.getBikes()
   }
   render(){
-    const bikesList = this.props.bikes.map(function(bikesArr){
-      return(
+    const bikesList = this.props.bikes.map((bikesArr)=>
         <Col xs={12} sm={6} md={4} key={bikesArr._id}>
           <BikeItem
             _id={bikesArr._id}
@@ -24,8 +23,7 @@ class BikesList extends React.Component {
             description={bikesArr.description}
             price={bikesArr.price}/>
         </Col>
-      )
-    })
+    )
     return(
       <Grid>
         <Row>

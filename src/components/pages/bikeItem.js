@@ -1,7 +1,8 @@
+"use strict"
 import React from 'react';
 import {Row, Col, Well, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux'
+import {bindActionCreators} from 'redux';
 import {addToCart, updateCart} from '../../actions/cartActions';
 
 class BikeItem extends React.Component{
@@ -20,11 +21,11 @@ class BikeItem extends React.Component{
       let _id = this.props._id;
 
       let cartIndex = this.props.cart.findIndex(function(cart){
-        return cart._id===_id;
+        return cart._id ===_id;
       })
       //IF RETURNS -1 THERE ARE NO ITEMS WITH SAME ID
       if (cartIndex === -1){
-        this.prop.addToCart(bike);
+        this.props.addToCart(bike)
       } else {
         //NEED TO UPDATE THE QUANTITY
         this.props.updateCart(_id, 1)
@@ -58,7 +59,7 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    addToCart:addToCart,
+    addToCart,
     updateCart:updateCart
   }, dispatch)
 }

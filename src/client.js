@@ -3,11 +3,12 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import Menu from './components/menu'
-import Footer from './components/footer'
+import Menu from './components/menu';
+import Footer from './components/footer';
 
 import {applyMiddleware, createStore} from 'redux';
-import logger from 'redux-logger';
+import { logger } from 'redux-logger'
+import thunk from 'redux-thunk';
 
 // REACT-ROUTER
 import {Router, IndexRoute, browserHistory} from 'react-router';
@@ -20,7 +21,7 @@ import {addToCart} from './actions/cartActions';
 import {postBikes, deleteBikes, updateBikes} from './actions/bikesActions'
 
 //STEP 1 create the store
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(thunk, logger);
 const store = createStore(reducers, middleware);
 
 import BikesList from './components/pages/bikeslist';

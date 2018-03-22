@@ -2,26 +2,14 @@
 
 //BIKE REDUCERS
 export function bikesReducers(state={
-  bikes:
-      [{
-      _id: 1,
-      title: 'this is the first bike title',
-      description: 'this is the first bike description',
-      price: 120.50
-    },
-    {
-      _id: 2,
-      title: 'this is the second bike title',
-      description: 'this is the second bike description',
-      price: 207.62
-    }]
+  bikes:[]
 }, action){
   switch(action.type){
-    case "GET_BIKE":
-    return {...state, bikes:[...state.bikes]}
+    case "GET_BIKES":
+    return {...state, bikes:[...action.payload]}
     break;
 
-    case "POST_BIKE":
+    case "POST_BIKES":
     let bikes = state.bikes.concat(action.payload)
     return {bikes};
     return {bikes:[...state.bikes, ...action.payload]}
