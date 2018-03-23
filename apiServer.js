@@ -1,7 +1,9 @@
-var createError = require('http-errors');
+"use strict"
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 var app = express();
 
@@ -14,7 +16,40 @@ app.use(cookieParser());
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/bikeshop');
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, '#MongoDB - connection error: '));
+
 var Bikes = require('./models/bikes.js');
+//----------SET UP SESSION----------------------
+app.use(session({
+  secret: 'mySecretString',
+  saveUninitialized: false,
+  resave: false,
+  cookie:{maxAge: 1000 * 60 * 60 * 24 * 2},
+  store: new MongoStore({mongooseConnection: db, ttl: 2 * 24 * 60 * 60})
+}));
+
+// SAVE TO SESSION CART API
+app.post('/cart', function(req, res){
+  var cart = req.body;
+  req.session.cart = cart;
+  req.session.save(function(err){
+    if(err){
+      throw err;
+    }
+    res.json(req.session.cart);
+  })
+});
+
+// GET SESSION CART API
+app.get('/cart', function(req, res){
+  if(typeof req.session.cart !== 'undefined'){
+    res.json(req.session.cart);
+  }
+});
+
+//------------- END OF SESSION -----------------
+
 
 //-------------- POST ----------------------
 
@@ -30,7 +65,7 @@ app.post('/bikes', function(req, res){
 });
 
 //-------------- GET ----------------------
-app.get('/bikes', function(req,res){
+app.get('/bikes', function(req, res){
   Bikes.find(function(err, bikes){
     if(err){
       throw err;
@@ -76,6 +111,28 @@ app.put('/bikes/:_id', function(req, res){
 
 })
 
+//----------- GET IMAGES API -------------
+app.get('/images', function(req, res){
+
+  const imgdir = __dirname + '/public/images';
+  //REQUIRE FILE SYSTEM
+  const fs = require('fs');
+  //READ ALL FILES IN THE DIRECTORY
+  fs.readdir(imgdir, function(err, files){
+    if(err){
+      return console.log(err);
+    }
+    //CREATE AN EMPTY ARRAY
+    const filesArr = [];
+    //ITERATE ALL IMAGES IN DIR AND ADD TO ARRAY
+    files.forEach(function(file){
+      filesArr.push({name: file});
+    });
+    //SEND THE JSON RESPONSE WITH ARRAY
+    res.json(filesArr);
+  })
+})
+
 // End APIs
 
 app.listen(3001, function(err){
@@ -83,4 +140,4 @@ app.listen(3001, function(err){
     return console.log(err);
   }
   console.log('API Server is listening on http://localhost:3001');
-})
+});
