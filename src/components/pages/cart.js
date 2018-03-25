@@ -96,7 +96,7 @@ class Cart extends React.Component{
           </Row>
           <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title>Checkout</Modal.Title>
             </Modal.Header>
             <Modal.Body>
             <h6>Your order has been saved.</h6>

@@ -14,12 +14,16 @@ app.use(cookieParser());
 
 // APIs
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/bikeshop');
+// MONGO LAB
+mongoose.connect(process.env.DATABASEURL);
+// LOCAL DB
+// mongoose.connect('mongodb://localhost:27017/bikeshop');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, '#MongoDB - connection error: '));
 
 var Bikes = require('./models/bikes.js');
+
 //----------SET UP SESSION----------------------
 app.use(session({
   secret: 'mySecretString',
@@ -80,7 +84,7 @@ app.delete('/bikes/:_id', function(req, res){
 
   Bikes.remove(query, function(err, bikes){
     if(err){
-      throw err;
+      console.log("# API DELETE BIKE:", err);
     }
     res.json(bikes);
   })

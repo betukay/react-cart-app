@@ -7,7 +7,7 @@ class Footer extends React.Component{
       <footer className="footer text-center">
         <div className="container">
           <div className="container">
-            <p className="footer-text">Copyright &copy; 2018 Boston Bike Shop. All rights reserved.</p>
+            <p className="footer-text">Copyright &copy; 2018 Boston Bikes Inc. All rights reserved.</p>
           </div>
         </div>
       </footer>

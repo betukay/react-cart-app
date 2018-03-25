@@ -47,3 +47,10 @@ export function updateBikes(bike){
           payload: bike
         }
 }
+
+//RESET FORM BUTTON
+export function resetButton(){
+  return {
+          type:"RESET_BUTTON"
+        }
+}

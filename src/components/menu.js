@@ -1,23 +1,21 @@
 "use strict"
 import React from 'react';
 import {Nav, NavItem, Navbar, Badge} from 'react-bootstrap';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+
 
 class Menu extends React.Component{
   render(){
     return(
       <Navbar inverse fixedTop>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="/"><i className="fas fa-bicycle"></i>  Boston Bike Shop</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} href="/about">About</NavItem>
-            <NavItem eventKey={2} href="/contacts">Contact Us</NavItem>
-          </Nav>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/" className="site-title"><i className="fas fa-bicycle"></i>  <em>Boston Bikes</em></a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+
 
           <Nav pullRight>
             <NavItem eventKey={1} href="/admin">Admin</NavItem>
@@ -30,7 +28,7 @@ class Menu extends React.Component{
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    )
+    );
   }
 }
 function mapStateToProps(state){

@@ -9,10 +9,17 @@ export function bikesReducers(state={
     return {...state, bikes:[...action.payload]}
     break;
 
-    case "POST_BIKES":
-    let bikes = state.bikes.concat(action.payload)
-    return {bikes};
-    return {bikes:[...state.bikes, ...action.payload]}
+    case "POST_BIKE":
+    return {...state, bikes:[...state.bikes, ...action.payload], msg:'Saved! Click to continue',
+    style:'success', validation:'success'}
+    break;
+
+    case "POST_BIKE_REJECTED":
+    return {...state, msg:'Please try again', style:'danger', validation:'error'}
+    break;
+
+    case "RESET_BUTTON":
+    return {...state, msg:null, style:'info', validation:null}
     break;
 
     case "DELETE_BIKE":
