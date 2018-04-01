@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {Modal, Panel, Col, Row, Well, Button, ButtonGroup, Label} from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
 import {deleteCartItem, updateCart, getCart} from '../../actions/cartActions';
+import PayPal from './paypal';
+
 
 class Cart extends React.Component{
   componentDidMount(){
@@ -53,7 +55,7 @@ class Cart extends React.Component{
     }
   }
   renderEmpty(){
-    return(<div></div>)
+    return(<div id="nothing">Your cart is currently empty.</div>)
   }
   renderCart(){
     const cartItemsList = this.props.cart.map(function(cartArr){
@@ -81,6 +83,7 @@ class Cart extends React.Component{
         </Panel>
       )
     }, this)
+
     return(
       <div>
         <Panel style={{padding:"15px"}} bsStyle="primary">
@@ -99,19 +102,18 @@ class Cart extends React.Component{
               <Modal.Title>Checkout</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <h6>Your order has been saved.</h6>
-              <p>You will recieve an email confirmation momentarily.</p>
+            <h4>Thank you for choosing Boston Bikes!</h4>
+              <p>Please proceed to PayPal for checkout.</p>
             </Modal.Body>
             <Modal.Footer>
                <Col xs={6}>
                <h6>Total $ {this.props.totalAmount}</h6>
                </Col>
-              <Button onClick={this.close.bind(this)}>Close</Button>
+              <PayPal />
+              <Button onClick={this.close.bind(this)} bsStyle='info'>Close</Button>
             </Modal.Footer>
           </Modal>
         </Panel>
-
-
       </div>
     );
   }

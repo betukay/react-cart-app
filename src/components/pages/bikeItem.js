@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addToCart, updateCart} from '../../actions/cartActions';
 
+
 class BikeItem extends React.Component{
 
   handleCart(){

@@ -55,9 +55,6 @@ class BikesList extends React.Component {
             </Carousel.Item>
           </Carousel>
         </Row>
-        <Row>
-          <Cart />
-        </Row>
         <Row style={{marginTop:'15px'}}>
           {bikesList}
         </Row>

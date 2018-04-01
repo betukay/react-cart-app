@@ -15,9 +15,9 @@ app.use(cookieParser());
 // APIs
 var mongoose = require('mongoose');
 // MONGO LAB
-mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect(process.env.DATABASEURL);
 // LOCAL DB
-// mongoose.connect('mongodb://localhost:27017/bikeshop');
+ mongoose.connect('mongodb://localhost:27017/bikeshop');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, '#MongoDB - connection error: '));

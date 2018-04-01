@@ -67,3 +67,10 @@ button.link:focus:active:hover {
   border-radius: 4px;
   min-height: 82px;
 }
+
+#nothing {
+  font-size: 1.5em;
+  height: 50vh;
+  text-align: center;
+  margin-top: 20%;
+}
