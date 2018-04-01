@@ -11,6 +11,9 @@ class PayPal extends React.Component {
   }
 
   render(){
+
+    
+
     return(
       <Button bsStyle='warning' id="paypal-button-container">PayPal Checkout</Button>
     )
