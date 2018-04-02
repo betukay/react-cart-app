@@ -106,11 +106,14 @@ class Cart extends React.Component{
               <p>Please proceed to PayPal for checkout.</p>
             </Modal.Body>
             <Modal.Footer>
-               <Col xs={6}>
+              <Col style={{textAlign:"center"}}>
+               <Row>
                <h6>Total $ {this.props.totalAmount}</h6>
-               </Col>
+               </Row>
+               <Row>
               <PayPal />
-              <Button onClick={this.close.bind(this)} bsStyle='info'>Close</Button>
+              </Row>
+              </Col>
             </Modal.Footer>
           </Modal>
         </Panel>

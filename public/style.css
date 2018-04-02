@@ -12,6 +12,10 @@ body {
   margin: 20px 0;
 }
 
+h6 {
+  font-size: 1.2em;
+}
+
 /*-------------- NAVBAR --------------*/
 
 .badge {
