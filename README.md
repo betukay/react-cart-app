@@ -2,9 +2,13 @@
 
 Boston Bikes provides users with a seamless shopping experience and easy PayPal transactions. 
 
+<img src="public/images/image1.png">
+
 ## Live Demo
 
 App deployed on Heroku at: https://desolate-sea-18254.herokuapp.com/
+
+<img src="public/images/image2.png">
 
 ## Built With
 
@@ -16,7 +20,22 @@ App deployed on Heroku at: https://desolate-sea-18254.herokuapp.com/
 * [Express](https://expressjs.com/) - web application framework for Node.js
 * [MongoDB](https://www.mongodb.com/) - back-end database used
 
+
+
 ## Usage 
+
+After browsing our current inventory, select the items you would to purchase. Then click on "Your Cart" in the header to review the items in your shopping cart.
+
+<img src="public/images/image3.png">
+
+Next click on "Proceed to Checkout" to bring up the modal window indicating that you will be leaving the site temporarily to checkout via PayPal Express Checkout. 
+
+<img src="public/images/image4.png">
+
+Clicking the yellow "Pay with PayPal" button begins the secured payment authorization process.
+
+<img src="public/images/image5.png">
+
 
 
 ## Contributing
